@@ -12,3 +12,9 @@ app.get("/api/movies", (req, res) => {
   let movies = repoContext.movies.findAllMovies();
   res.send(movies);
 });
+
+app.get("/api/movies/:id", (req, res) => {
+  let id = req.params.id;
+  let movie = repoContext.movies.findMovieById(id);
+  res.send(movie);
+});
