@@ -1,0 +1,22 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "Modify/view a movie library using Node.js, Express.js, JavaScript, jQuery, AJAX, HTML, and CSS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dillon-Tarr/MovieLibrary.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dillon-Tarr/MovieLibrary/issues"
+  },
+  "homepage": "https://github.com/Dillon-Tarr/MovieLibrary#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
