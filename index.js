@@ -1,11 +1,14 @@
 const repoContext = require("./repository/repository-wrapper.js");
 
+const validators = require("./validators/custom-validations.js");
+
 const express = require('express');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => validators.body(req, res, next));
 
 app.listen(3000, function (){
   console.log("Server started. Listening on port 3000.");
