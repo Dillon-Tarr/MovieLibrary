@@ -1,3 +1,9 @@
+th{
+    font-size: 1.8rem;
+}
+td{
+    font-size: 1.3rem; 
+}
 .searchBox{
     margin: 1.7rem .1rem;
 }
