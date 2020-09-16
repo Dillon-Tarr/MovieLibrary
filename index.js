@@ -33,3 +33,9 @@ app.put("/api/movies", (req, res) => {
   let updatedMovie = repoContext.movies.updateMovie(movieToUpdate);
   res.send(updatedMovie);
 });
+
+app.delete("/api/movies/:id", (req, res) => {
+  let id = req.params.id;
+  let updatedDataSet = repoContext.movies.deleteMovie(id);
+  res.send(updatedDataSet);
+});
