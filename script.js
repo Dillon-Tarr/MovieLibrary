@@ -21,7 +21,7 @@ $(document).ready(function() {
         var $jsonData = $('#jsonData');
         var songTemplate = "" +
         "<tr>" +
-        '<td scope="col"><span><button class="updateButton" id="updateButton{{id}}">Update</button></span></td>' +
+        '<td scope="col"><span><button class="updateButton" id="updateButton{{id}}" onclick="clickEvent()">Update</button></span></td>' +
         '<td class="w-25"><img src="{{poster}}" class="img-fluid posterImg" alt="Movie Poster"></td>' +        
         "<td>{{title}}</td>" +
         "<td>{{director}}</td>" +
@@ -31,7 +31,7 @@ $(document).ready(function() {
         $.each(data, function(i, jsonData) {
             $jsonData.append(Mustache.render(songTemplate, jsonData));
         });
-    };
+    }
 
     function filterResults(currentData, th, str){
         var newResults = $(currentData).filter(function(i) {
@@ -39,7 +39,11 @@ $(document).ready(function() {
         });
         $("#jsonData > tr").remove();
         buildTable(newResults);
-    };
+    }
+
+    function clickEvent(){
+        console.log("hello ");
+    }
 
     // function inputSearch(th){
     //     $("#" + th).empty();

@@ -6,7 +6,7 @@
 <title>Music Library</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="script.js"></script>
+
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 <link rel="stylesheet" type="text/css" href="styles.css">
@@ -29,7 +29,7 @@
                 <table class="table table-image">
                     <thead> 
                     <tr class="tbl">
-                        <th scope="col"><span id="addButton"><button>Add New</button></span></th>
+                        <th scope="col"><span id="addButton"><button onclick="clickEvent()">Add New</button></span></th>
                         <th scope="col"><span id="poster">Poster</span></th>
                         <th scope="col"><span id="title">Title</span></th>
                         <th scope="col"><span id="director">Director</span></th>
@@ -52,4 +52,5 @@
     </div>
 
 </body>
+<script src="script.js"></script>
 </html>
