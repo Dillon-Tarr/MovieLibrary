@@ -21,11 +21,10 @@ $(document).ready(function() {
         var $jsonData = $('#jsonData');
         var songTemplate = "" +
         "<tr>" +
+        "<td>{{poster}}</td>" +        
         "<td>{{title}}</td>" +
-        "<td>{{album}}</td>" +
-        "<td>{{artist}}</td>" +
-        "<td>{{genre}}</td>" +
-        "<td>{{releaseDate}}</td>" + 
+        "<td>{{director}}</td>" +
+        "<td>{{genre}}</td>"
         "</tr>";
 
         $.each(data, function(i, jsonData) {
@@ -41,44 +40,44 @@ $(document).ready(function() {
         buildTable(newResults);
     };
 
-    function inputSearch(th){
-        $("#" + th).empty();
-        $("#" + th + "Input").fadeIn();
-        $("#btn").fadeIn();
-        $("#reset").fadeIn();
-        $("#btn").click(function(){
-            var str = $("#" + th + "Input").val();
-            filterResults(currentData, th, str);
-        });
-    };
+    // function inputSearch(th){
+    //     $("#" + th).empty();
+    //     $("#" + th + "Input").fadeIn();
+    //     $("#btn").fadeIn();
+    //     $("#reset").fadeIn();
+    //     $("#btn").click(function(){
+    //         var str = $("#" + th + "Input").val();
+    //         filterResults(currentData, th, str);
+    //     });
+    // };
 
-    $("#reset").click(function(){
-        window.location.reload();
-    });
+    // $("#reset").click(function(){
+    //     window.location.reload();
+    // });
 
-    $("#title").click(function(event) {
-        th = "title";
-        inputSearch(th);
-    });
+    // $("#title").click(function(event) {
+    //     th = "title";
+    //     inputSearch(th);
+    // });
 
-    $("#album").click(function(event) {
-        th = "album";
-        inputSearch(th);
-    });
+    // $("#album").click(function(event) {
+    //     th = "album";
+    //     inputSearch(th);
+    // });
 
-    $("#artist").click(function(event) {
-        th = "artist";
-        inputSearch(th);
-    });
+    // $("#artist").click(function(event) {
+    //     th = "artist";
+    //     inputSearch(th);
+    // });
 
-    $("#genre").click(function(event) {
-        th = "genre";
-        inputSearch(th);
-    });
+    // $("#genre").click(function(event) {
+    //     th = "genre";
+    //     inputSearch(th);
+    // });
 
-    $("#releaseDate").click(function(event) {
-        th = "releaseDate";
-        inputSearch(th);
-    });
+    // $("#releaseDate").click(function(event) {
+    //     th = "releaseDate";
+    //     inputSearch(th);
+    // });
 
 });
