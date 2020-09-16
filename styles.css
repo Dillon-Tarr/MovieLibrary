@@ -1,8 +1,10 @@
 th{
     font-size: 1.8rem;
+    vertical-align: middle;
 }
 td{
-    font-size: 1.3rem; 
+    font-size: 1.3rem;
+    vertical-align: middle; 
 }
 .searchBox{
     margin: 1.7rem .1rem;
