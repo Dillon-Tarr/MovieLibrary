@@ -21,7 +21,7 @@ $(document).ready(function() {
         var $jsonData = $('#jsonData');
         var songTemplate = "" +
         "<tr>" +
-        '<td class="w-25"><img src="{{poster}}" class="img-fluid img-thumbnail" alt="Movie Poster"></td>' +        
+        '<td class="w-25"><img src="{{poster}}" class="img-fluid posterImg" alt="Movie Poster"></td>' +        
         "<td>{{title}}</td>" +
         "<td>{{director}}</td>" +
         "<td>{{genre}}</td>"

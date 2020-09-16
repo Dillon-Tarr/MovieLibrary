@@ -1,35 +1,35 @@
 [
   {
     "id": 1,
-    "poster": "/src/default-poster.jpg",
+    "poster": "./src/default-poster.jpg",
     "title": "The Departed",
     "director": "Martin Scorsese",
     "genre": "Drama"
   },
   {
     "id": 2,
-    "poster": "/src/default-poster.jpg",
+    "poster": "./src/default-poster.jpg",
     "title": "The Dark Knight",
     "director": "Christopher Nolan",
     "genre": "Drama"
   },
   {
     "id": 3,
-    "poster": "/src/default-poster.jpg",
+    "poster": "./src/default-poster.jpg",
     "title": "Inception",
     "director": "Christopher Nolan",
     "genre": "Drama"
   },
   {
     "id": 4,
-    "poster": "/src/default-poster.jpg",
+    "poster": "./src/default-poster.jpg",
     "title": "Pineapple Express",
     "director": "David Gordon Green",
     "genre": "Comedy"
   },
   {
     "id": 5,
-    "poster": "/src/default-poster.jpg",
+    "poster": "./src/default-poster.jpg",
     "title": "Die Hard",
     "director": "John McTiernan",
     "genre": "Action"
