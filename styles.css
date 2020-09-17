@@ -6,12 +6,19 @@ td{
     font-size: 1.3rem;
     vertical-align: middle; 
 }
+input{
+    margin: .5rem 0rem;     
+}
 .searchBox{
     margin: 1.7rem .1rem;
 }
 .posterImg{
     max-height: 20rem;
 }
-.hidden{
-    display: ;
+.hiddenButton{
+    display: none; 
+    margin: .5rem 0rem;   
+}
+#addMovieInputRow{
+    display: none;
 }
