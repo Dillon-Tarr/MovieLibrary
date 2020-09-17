@@ -37,15 +37,15 @@
                     </tr>
                     </thead>
                     <tbody id="jsonData"> 
-                        <tr>
+                        <tr id="movieInputRowROW">
                             <td>
-                                <button class="hiddenButton" id="confirmAdd" onclick="addMovie()">Confirm Add</button><br>
-                                <button class="hiddenButton" id="cancelAdd" onclick="refreshPage()">Cancel Add</button>
+                                <button class="hiddenButton movieInputRow" id="confirmAdd" onclick="addMovie()">Confirm Add</button><br>
+                                <button class="hiddenButton movieInputRow" id="cancelAdd" onclick="refreshPage()">Cancel Add</button>
                             </td>
-                            <td><input class="addMovieInputRow" id="poster"></td>
-                            <td><input class="addMovieInputRow" id="title"></td>
-                            <td><input class="addMovieInputRow" id="director"></td>
-                            <td><input class="addMovieInputRow" id="genre"></td>
+                            <td><input class="movieInputRow" id="poster" placeholder="enter image url"></td>
+                            <td><input class="movieInputRow" id="title" placeholder="enter title"></td>
+                            <td><input class="movieInputRow" id="director" placeholder="enter director's name"></td>
+                            <td><input class="movieInputRow" id="genre" placeholder="enter genre"></td>
                         </tr>
 
                     </tbody>

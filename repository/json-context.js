@@ -39,6 +39,7 @@ function create(dataPath, data) {
   const newObjectId = Object.keys(jsonData).length + 1;
   newRecord = {
     id: newObjectId,
+    poster: data.poster,
     title: data.title,
     director: data.director,
     genre: data.genre,

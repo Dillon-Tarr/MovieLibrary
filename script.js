@@ -25,8 +25,8 @@ function buildTable(data){
     var $jsonData = $('#jsonData');
     var songTemplate = "" +
     "<tr>" +
-    '<td scope="col"><span id="updateButtons{{id}}"><button class="updateButton" id="updateButton{{id}}" onclick="createUpdateFields({{id}})">Update</button>' +
-    '<button class="hiddenButton" id="confirmUpdate{{id}}" onclick="updateMovie({{id}})">Confirm Update</button>' +
+    '<td scope="col"><span class="updateButtons{{id}}"><button class="updateButton" id="updateButton{{id}}" onclick="createUpdateFields({{id}})">Update</button>' +
+    '<button class="hiddenButton" id="confirmUpdate{{id}}" onclick="updateMovie({{id}})">Confirm Update</button><br>' +
     '<button class="hiddenButton" id="cancelUpdate{{id}}" onclick="refreshPage()">Cancel Update</button></span></td>' +
     '<td class="w-25" id="poster{{id}}"><img src="{{poster}}" class="img-fluid posterImg" alt="Movie Poster"></td>' +        
     '<td id="title{{id}}">{{title}}</td>' +
@@ -64,13 +64,13 @@ function refreshPage(){
 }
 
 function createUpdateFields(id){
-$( `#updateButton${id}` ).css( "display", "none" );
-$( `#confirmUpdate${id}` ).css( "display", "initial" );
-$( `#cancelUpdate${id}` ).css( "display", "initial" );
-$( `#poster${id}` ).html( `<input type="text" id="posterInput${id}" value="${currentData[id - 1].poster}">` );
-$( `#title${id}` ).html( `<input type="text" id="titleInput${id}" value="${currentData[id - 1].title}">` );
-$( `#director${id}` ).html( `<input type="text" id="directorInput${id}" value="${currentData[id - 1].director}">` );
-$( `#genre${id}` ).html( `<input type="text" id="genreInput${id}" value="${currentData[id - 1].genre}">` );
+    $( `#updateButton${id}` ).css( "display", "none" );
+    $( `#confirmUpdate${id}` ).css( "display", "initial" );
+    $( `#cancelUpdate${id}` ).css( "display", "initial" );
+    $( `#poster${id}` ).html( `<input type="text" id="posterInput${id}" value="${currentData[id - 1].poster}">` );
+    $( `#title${id}` ).html( `<input type="text" id="titleInput${id}" value="${currentData[id - 1].title}">` );
+    $( `#director${id}` ).html( `<input type="text" id="directorInput${id}" value="${currentData[id - 1].director}">` );
+    $( `#genre${id}` ).html( `<input type="text" id="genreInput${id}" value="${currentData[id - 1].genre}">` );
 }
 
 function updateMovie(id){
@@ -104,12 +104,9 @@ function updateMovie(id){
 }
 
 function createAddFields(){
-    $(`.addMovieInputRow`).css("display", "initial");
+    $(`.movieInputRow`).css("display", "initial");
     $(`#addButton`).css("display", "none");
-    $(`#confirmAdd`).css("display", "initial");
-    $(`#cancelAdd`).css("display", "initial");
-
-
+    $(`#movieInputRowROW td`).css({"line-height": "initial", "padding": "initial"})
 }
 
 function addMovie(){
