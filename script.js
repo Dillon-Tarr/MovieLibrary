@@ -1,11 +1,5 @@
 var currentData = null;
 var th = "";
-var newMovie =   {
-    "poster": "",
-    "title": "",
-    "director": "",
-    "genre": ""
-  };
 
 $(document).ready(function() {
 
@@ -32,8 +26,8 @@ function buildTable(data){
     var songTemplate = "" +
     "<tr>" +
     '<td scope="col"><span id="updateButtons{{id}}"><button class="updateButton" id="updateButton{{id}}" onclick="createUpdateFields({{id}})">Update</button>' +
-    '<button class="hiddenButton confirmButton" id="confirmUpdate{{id}}" onclick="updateMovie({{id}})">Confirm Update</button>' +
-    '<button class="hiddenButton cancelButton" id="cancelUpdate{{id}}" onclick="refreshPage()">Cancel Update</button></span></td>' +
+    '<button class="hiddenButton" id="confirmUpdate{{id}}" onclick="updateMovie({{id}})">Confirm Update</button>' +
+    '<button class="hiddenButton" id="cancelUpdate{{id}}" onclick="refreshPage()">Cancel Update</button></span></td>' +
     '<td class="w-25" id="poster{{id}}"><img src="{{poster}}" class="img-fluid posterImg" alt="Movie Poster"></td>' +        
     '<td id="title{{id}}">{{title}}</td>' +
     '<td id="director{{id}}">{{director}}</td>' +
@@ -85,12 +79,49 @@ function updateMovie(id){
     let director = $( `#directorInput${id}` ).val();
     let genre = $( `#genreInput${id}` ).val();
     
-
     $.ajax({
         url: 'http://localhost:3000/api/movies',
         type: 'PUT',    
         data: `{
             "id": ${id},  
+            "poster": "${poster}",
+            "title": "${title}",
+            "director": "${director}",
+            "genre": "${genre}"
+          }`,
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        success: function(result) {
+            console.log(result);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(errorThrown);
+        },
+        complete: function(){
+            setTimeout(refreshPage, 1500);
+        }
+    }); 
+}
+
+function createAddFields(){
+    $(`.addMovieInputRow`).css("display", "initial");
+    $(`#addButton`).css("display", "none");
+    $(`#confirmAdd`).css("display", "initial");
+    $(`#cancelAdd`).css("display", "initial");
+
+
+}
+
+function addMovie(){
+    let poster = $( `#poster` ).val();
+    let title = $( `#title` ).val();
+    let director = $( `#director` ).val();
+    let genre = $( `#genre` ).val();
+    
+    $.ajax({
+        url: 'http://localhost:3000/api/movies',
+        type: 'POST',    
+        data: `{  
             "poster": "${poster}",
             "title": "${title}",
             "director": "${director}",

@@ -33,5 +33,12 @@
     "title": "Die Hard",
     "director": "John McTiernan",
     "genre": "Action"
+  },
+  {
+    "id": 6,
+    "poster": "https://www.cheatsheet.com/wp-content/uploads/2019/07/golden-girls-cast-1024x679.jpg",
+    "title": "The Golden Girls",
+    "director": "Susan Harris",
+    "genre": "Comedy"
   }
 ]

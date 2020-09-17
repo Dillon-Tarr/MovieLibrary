@@ -1,10 +1,11 @@
+body{
+    background-color: #d0f0e4;
+}
 th{
     font-size: 1.8rem;
-    vertical-align: middle;
 }
 td{
     font-size: 1.3rem;
-    vertical-align: middle; 
 }
 input{
     margin: .5rem 0rem;     
@@ -19,6 +20,6 @@ input{
     display: none; 
     margin: .5rem 0rem;   
 }
-#addMovieInputRow{
+.addMovieInputRow{
     display: none;
 }

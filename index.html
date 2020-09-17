@@ -29,20 +29,23 @@
                 <table class="table table-image">
                     <thead> 
                     <tr class="tbl">
-                        <th scope="col"><span id="addButton"><button onclick="#">Add New</button></span></th>
-                        <th scope="col"><span id="poster">Poster</span></th>
-                        <th scope="col"><span id="title">Title</span></th>
-                        <th scope="col"><span id="director">Director</span></th>
-                        <th scope="col"><span id="genre">Genre</span></th>
+                        <th scope="col"><span id="addButton"><button onclick="createAddFields()">Add New</button></span></th>
+                        <th scope="col"><span>Poster</span></th>
+                        <th scope="col"><span>Title</span></th>
+                        <th scope="col"><span>Director</span></th>
+                        <th scope="col"><span >Genre</span></th>
                     </tr>
                     </thead>
                     <tbody id="jsonData"> 
-                        <tr id="addMovieInputRow">
-                            <td></td>
-                            <td><input></td>
-                            <td><input></td>
-                            <td><input></td>
-                            <td><input></td>
+                        <tr>
+                            <td>
+                                <button class="hiddenButton" id="confirmAdd" onclick="addMovie()">Confirm Add</button><br>
+                                <button class="hiddenButton" id="cancelAdd" onclick="refreshPage()">Cancel Add</button>
+                            </td>
+                            <td><input class="addMovieInputRow" id="poster"></td>
+                            <td><input class="addMovieInputRow" id="title"></td>
+                            <td><input class="addMovieInputRow" id="director"></td>
+                            <td><input class="addMovieInputRow" id="genre"></td>
                         </tr>
 
                     </tbody>
