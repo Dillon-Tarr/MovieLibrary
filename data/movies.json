@@ -15,30 +15,23 @@
   },
   {
     "id": 3,
-    "poster": "./src/default-poster.jpg",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
     "title": "Inception",
     "director": "Christopher Nolan",
     "genre": "Drama"
   },
   {
     "id": 4,
-    "poster": "./src/default-poster.jpg",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTY1MTE4NzAwM15BMl5BanBnXkFtZTcwNzg3Mjg2MQ@@._V1_.jpg",
     "title": "Pineapple Express",
     "director": "David Gordon Green",
     "genre": "Comedy"
   },
   {
     "id": 5,
-    "poster": "./src/default-poster.jpg",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZjRlNDUxZjAtOGQ4OC00OTNlLTgxNmQtYTBmMDgwZmNmNjkxXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
     "title": "Die Hard",
     "director": "John McTiernan",
     "genre": "Action"
-  },
-  {
-    "id": 6,
-    "poster": "https://www.cheatsheet.com/wp-content/uploads/2019/07/golden-girls-cast-1024x679.jpg",
-    "title": "The Golden Girls",
-    "director": "Susan Harris",
-    "genre": "Comedy"
   }
 ]
