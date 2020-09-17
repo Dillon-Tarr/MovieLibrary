@@ -1,14 +1,14 @@
 [
   {
     "id": 1,
-    "poster": "./src/default-poster.jpg",
+    "poster": "https://lh3.googleusercontent.com/-ieKyp8Cd7YiOAKNETTQjOAfaMu2BiDglPg0DaLQ_rH_ddZOMbepPA6ttqtTgtx0sewhqw=w400-h600-rw",
     "title": "The Departed",
     "director": "Martin Scorsese",
     "genre": "Drama"
   },
   {
     "id": 2,
-    "poster": "./src/default-poster.jpg",
+    "poster": "https://images-na.ssl-images-amazon.com/images/I/71tUSFn3W0L._AC_SY879_.jpg",
     "title": "The Dark Knight",
     "director": "Christopher Nolan",
     "genre": "Drama"

@@ -39,13 +39,13 @@ function buildTable(data){
     });
 }
 
-function filterResults(currentData, th, str){
-    var newResults = $(currentData).filter(function(i) {
-        return currentData[i][th] === str;
-    });
-    $("#jsonData > tr").remove();
-    buildTable(newResults);
-}
+// function filterResults(currentData, th, str){
+//     var newResults = $(currentData).filter(function(i) {
+//         return currentData[i][th] === str;
+//     });
+//     $("#jsonData > tr").remove();
+//     buildTable(newResults);
+// }
 
 
 // function inputSearch(th){
