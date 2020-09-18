@@ -1,5 +1,4 @@
 var currentData = null;
-var th = "";
 
 $(document).ready(function() {
 
@@ -11,8 +10,8 @@ $(document).ready(function() {
             type: 'GET',
             success: function(data){
                 currentData = data;
-                console.log(data);
-                buildTable(currentData);
+                console.log('Here is the data retrieved from the initial GET request:', data);
+                buildTable();
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(errorThrown);
@@ -21,31 +20,45 @@ $(document).ready(function() {
     });
 });
 
-function buildTable(data){
-    var $jsonData = $('#jsonData');
-    var songTemplate = "" +
-    "<tr>" +
-    '<td scope="col"><span class="updateButtons{{id}}"><button class="updateButton" id="updateButton{{id}}" onclick="createUpdateFields({{id}})">Update</button>' +
-    '<button class="hiddenButton" id="confirmUpdate{{id}}" onclick="updateMovie({{id}})">Confirm Update</button><br>' +
-    '<button class="hiddenButton" id="cancelUpdate{{id}}" onclick="refreshPage()">Cancel Update</button></span></td>' +
-    '<td class="w-25" id="poster{{id}}"><img src="{{poster}}" class="img-fluid posterImg" alt="Movie Poster"></td>' +        
-    '<td id="title{{id}}">{{title}}</td>' +
-    '<td id="director{{id}}">{{director}}</td>' +
-    '<td id="genre{{id}}">{{genre}}</td>'
-    "</tr>";
+function buildTable(filter = false){
+    $('#table-data').html('');
+    let data;
 
-    $.each(data, function(i, jsonData) {
-        $jsonData.append(Mustache.render(songTemplate, jsonData));
-    });
+    if(filter === true){
+        data = filterMovies();
+        if (data.length === 0){
+            alert('No movies matched your search. Please try again.');
+            data = currentData;
+        }
+    }
+    else if (filter === false){
+        data = currentData;
+    }
+    else {
+        console.log("Something went very wrong with buildTable() in script.js.")
+    }
+
+    for(let i = 0; i < data.length; i++){
+        $("#table-data").append(`
+        <tr>
+            <td scope="col"><span class="updateButtons${data[i].id}"><button class="updateButton" id="updateButton${data[i].id}" onclick="createUpdateFields(${data[i].id})">Update</button>
+                <button class="hiddenButton" id="confirmUpdate${data[i].id}" onclick="updateMovie(${data[i].id})">Confirm Update</button><br>
+                <button class="hiddenButton" id="cancelUpdate${data[i].id}" onclick="refreshPage()">Cancel Update</button></span></td>
+            <td class="w-25" id="poster${data[i].id}"><img src="${data[i].poster}" class="img-fluid posterImg" alt="Movie Poster"></td>
+            <td id="title${data[i].id}">${data[i].title}</td>
+            <td id="director${data[i].id}">${data[i].director}</td>
+            <td id="genre${data[i].id}">${data[i].genre}</td>
+        </tr>`);
+    }
 }
 
 function filterMovies(){
     let dataToFilter = [...currentData];
     let filterBy = $('#searchBox').val();
-    let filteredData = myFilter(dataToFilter, filterBy);
-    if (filteredData.length === 0){
-        filteredData = [...currentData];
+    if (filterBy === ""){
+        return [];
     }
+    let filteredData = myFilter(dataToFilter, filterBy);
     return filteredData;
 }
   

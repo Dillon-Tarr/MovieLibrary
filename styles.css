@@ -64,3 +64,7 @@ input{
     transform: rotate(45deg);
     cursor: pointer;
 }
+#no-results-message{
+    font-size: 3rem;
+    padding: 5rem;
+}

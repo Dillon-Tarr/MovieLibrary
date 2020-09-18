@@ -20,7 +20,7 @@
         <h1 class="display-3">Movie Library</h1>
         </div>
         <div class="col-md-3 col-12">
-            <input id="searchBox" placeholder="enter text"><button id="searchButton" onclick="filterMovies()">Search</button>
+            <input id="searchBox" placeholder="enter text"><button id="searchButton" onclick="buildTable(true)">Search</button>
         </div>
     </div>
     <div class="container-fluid">
@@ -36,7 +36,7 @@
                         <th scope="col"><span >Genre</span></th>
                     </tr>
                     </thead>
-                    <tbody id="jsonData">
+                    <tbody id="table-data">
 
                     </tbody>
                 </table>
