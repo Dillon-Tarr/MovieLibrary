@@ -101,12 +101,10 @@ function updateMovie(id){
         }
     }); 
 }
-$("#addButton").click(function(event) {
-    $(`.bg-modal`).css("display", "flex");
-});
+
 
 $("#close").click(function(event) {
-    $(`.bg-modal`).css("display", "none");
+    $('.modal').modal('toggle')
 });
 
 function createAddFields(){

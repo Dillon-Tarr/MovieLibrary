@@ -29,7 +29,7 @@
                 <table class="table table-image">
                     <thead> 
                     <tr class="tbl">
-                        <th scope="col"><span><button id="addButton">Add New</button></span></th>
+                        <th scope="col"><span><button type="button" id="addButton" data-toggle="modal" data-target=".bg-modal">Add New</button></span></th>
                         <th scope="col"><span>Poster</span></th>
                         <th scope="col"><span>Title</span></th>
                         <th scope="col"><span>Director</span></th>
@@ -43,19 +43,21 @@
             </div>
         </div>
     </div>
-    <div class="bg-modal">
-        <div class="modal-content">
-        <div id="close">+</div>
-            <form>
-            <input class="modalInputRow" id="poster" placeholder="enter image url">
-            <input class="modalInputRow" id="title" placeholder="enter title">
-            <input class="modalInputRow" id="director" placeholder="enter director's name">
-            <input class="modalInputRow" id="genre" placeholder="enter genre">
-            <button class="modalInputRow" id="confirmAdd" onclick="addMovie()">Confirm Add</button>
-        </form>
-        </div>
-    </div>
 
+        <div class="modal fade bg-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div id="close">+</div>
+                    <form>
+                        <input class="modalInputRow" id="poster" placeholder="enter image url">
+                        <input class="modalInputRow" id="title" placeholder="enter title">
+                        <input class="modalInputRow" id="director" placeholder="enter director's name">
+                        <input class="modalInputRow" id="genre" placeholder="enter genre">
+                        <button class="modalInputRow" id="confirmAdd" onclick="addMovie()">Confirm Add</button>
+                    </form>
+            </div>
+        </div>
+        </div>
 </body>
 <script src="script.js"></script>
 </html>
