@@ -1,5 +1,5 @@
 body{
-    background-color: #d0f0e4;
+    background-color: rgb(208, 240, 228);
 }
 th{
     font-size: 1.8rem;
@@ -29,4 +29,38 @@ input{
 #movieInputRowROW td{
     line-height: 0;
     padding: 0px;
+}
+.bg-modal{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.modal-content{
+    width: 500px;
+    height: 300px;
+    background-color: rbg(208, 240, 228);
+    border-radius: 4px;
+    text-align: center;
+    padding: 1.5rem;
+    position: relative;
+}
+.modalInputRow{
+    width: 50%;
+    display: block;
+    margin: 15px auto;
+}
+#close{
+    position: absolute;
+    margin-top: -10px;
+    top: 0;
+    right: 7px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
 }
