@@ -53,3 +53,6 @@ input{
     transform: rotate(45deg);
     cursor: pointer;
 }
+#addButton{
+    font-size: 1.3rem;
+}
