@@ -64,8 +64,7 @@ function filterMovies(){
   
 function myFilter(array, userInput){
     return array.filter(function(el) {
-        return el["poster"].toLowerCase().includes(userInput.toLowerCase()) ||
-        el["title"].toLowerCase().includes(userInput.toLowerCase()) ||
+        return el["title"].toLowerCase().includes(userInput.toLowerCase()) ||
         el["director"].toLowerCase().includes(userInput.toLowerCase()) ||
         el["genre"].toLowerCase().includes(userInput.toLowerCase());
     }
