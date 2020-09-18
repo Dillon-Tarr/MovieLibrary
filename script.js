@@ -114,7 +114,6 @@ function updateMovie(id){
     }); 
 }
 
-
 $("#close").click(function(event) {
     $('.modal').modal('toggle')
 });
