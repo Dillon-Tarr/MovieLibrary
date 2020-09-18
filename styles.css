@@ -30,17 +30,6 @@ input{
     line-height: 0;
     padding: 0px;
 }
-.bg-modal{
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    display: none;
-}
 .modal-content{
     width: 500px;
     height: 300px;
@@ -64,7 +53,6 @@ input{
     transform: rotate(45deg);
     cursor: pointer;
 }
-#no-results-message{
-    font-size: 3rem;
-    padding: 5rem;
+#addButton{
+    font-size: 1.3rem;
 }

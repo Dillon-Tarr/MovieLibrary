@@ -33,5 +33,12 @@
     "title": "Die Hard",
     "director": "John McTiernan",
     "genre": "Action"
+  },
+  {
+    "id": 6,
+    "poster": "https://upload.wikimedia.org/wikipedia/en/9/9f/Vforvendettamov.jpg",
+    "title": "V for Vendetta",
+    "director": "James McTeigue",
+    "genre": "Action"
   }
 ]
