@@ -59,6 +59,25 @@ function buildTable(data){
 //     });
 // };
 
+function filterMovies(){
+    let dataToFilter = [...currentData];
+    let filterBy = $('#searchBox').val();
+    let filteredData = myFilter(dataToFilter, filterBy);
+    if (filteredData.length === 0){
+        filteredData = [...currentData];
+    }
+    return filteredData;
+}
+  
+function myFilter(array, userInput){
+    return array.filter(function(el) {
+        return el["poster"].toLowerCase().includes(userInput.toLowerCase()) ||
+        el["title"].toLowerCase().includes(userInput.toLowerCase()) ||
+        el["director"].toLowerCase().includes(userInput.toLowerCase()) ||
+        el["genre"].toLowerCase().includes(userInput.toLowerCase());
+    }
+)}
+
 function refreshPage(){
     window.location.reload();
 }
