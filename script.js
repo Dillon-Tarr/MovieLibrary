@@ -39,25 +39,24 @@ function buildTable(data){
     });
 }
 
-// function filterResults(currentData, th, str){
-//     var newResults = $(currentData).filter(function(i) {
-//         return currentData[i][th] === str;
-//     });
-//     $("#jsonData > tr").remove();
-//     buildTable(newResults);
-// }
-
-
-// function inputSearch(th){
-//     $("#" + th).empty();
-//     $("#" + th + "Input").fadeIn();
-//     $("#btn").fadeIn();
-//     $("#reset").fadeIn();
-//     $("#btn").click(function(){
-//         var str = $("#" + th + "Input").val();
-//         filterResults(currentData, th, str);
-//     });
-// };
+function filterMovies(){
+    let dataToFilter = [...currentData];
+    let filterBy = $('#searchBox').val();
+    let filteredData = myFilter(dataToFilter, filterBy);
+    if (filteredData.length === 0){
+        filteredData = [...currentData];
+    }
+    return filteredData;
+}
+  
+function myFilter(array, userInput){
+    return array.filter(function(el) {
+        return el["poster"].toLowerCase().includes(userInput.toLowerCase()) ||
+        el["title"].toLowerCase().includes(userInput.toLowerCase()) ||
+        el["director"].toLowerCase().includes(userInput.toLowerCase()) ||
+        el["genre"].toLowerCase().includes(userInput.toLowerCase());
+    }
+)}
 
 function refreshPage(){
     window.location.reload();
