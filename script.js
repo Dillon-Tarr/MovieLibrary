@@ -39,26 +39,6 @@ function buildTable(data){
     });
 }
 
-// function filterResults(currentData, th, str){
-//     var newResults = $(currentData).filter(function(i) {
-//         return currentData[i][th] === str;
-//     });
-//     $("#jsonData > tr").remove();
-//     buildTable(newResults);
-// }
-
-
-// function inputSearch(th){
-//     $("#" + th).empty();
-//     $("#" + th + "Input").fadeIn();
-//     $("#btn").fadeIn();
-//     $("#reset").fadeIn();
-//     $("#btn").click(function(){
-//         var str = $("#" + th + "Input").val();
-//         filterResults(currentData, th, str);
-//     });
-// };
-
 function filterMovies(){
     let dataToFilter = [...currentData];
     let filterBy = $('#searchBox').val();
