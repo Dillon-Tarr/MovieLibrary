@@ -32,7 +32,7 @@ input{
 }
 .modal-content{
     width: 500px;
-    height: 300px;
+    height: 350px;
     background-color: rbg(208, 240, 228);
     border-radius: 4px;
     text-align: center;
@@ -55,4 +55,7 @@ input{
 }
 #addButton{
     font-size: 1.3rem;
+}
+.ratingInput{
+    width: 42px;
 }

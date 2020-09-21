@@ -48,7 +48,6 @@ function buildTable(filter = false){
             <td id="title${data[i].id}">${data[i].title}</td>
             <td id="director${data[i].id}">${data[i].director}</td>
             <td id="genre${data[i].id}">${data[i].genre}</td>
-            <td id="rating${data[i].id}">${data[i].rating}</td>
         </tr>`);
     }
 }
@@ -83,7 +82,6 @@ function createUpdateFields(id){
     $( `#title${id}` ).html( `<input type="text" id="titleInput${id}" value="${currentData[id - 1].title}">` );
     $( `#director${id}` ).html( `<input type="text" id="directorInput${id}" value="${currentData[id - 1].director}">` );
     $( `#genre${id}` ).html( `<input type="text" id="genreInput${id}" value="${currentData[id - 1].genre}">` );
-    $( `#rating${id}` ).html( `<input type="text" id="ratingInput${id}" class="ratingInput" value="${currentData[id - 1].rating}">` );
 }
 
 function updateMovie(id){
