@@ -116,6 +116,59 @@ function updateMovie(id){
     }); 
 }
 
+async function rateMovie(id){
+    let usersRating = parseFloat($( `ratingInput${id}` ).val()).toFixed(2);
+    let movie;
+
+    $.ajax({
+        url: `http://localhost:3000/api/movies/${id}`,
+        dataType: "json",
+        type: 'GET',
+        success: async function(data){
+            movie = data;
+            let newRating = ((movie.ratingData.currentRating * movie.ratingData.numberOfRatings) + usersRating) / (movie.ratingData.numberOfRatings + 1);
+            await updateRating(movie, usersRating, newRating);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+}
+
+async function updateRating(movie, usersRating, newRating){
+    $.ajax({
+    url: 'http://localhost:3000/api/movies',
+    type: 'PUT',    
+    data: `{
+        "id": ${movie.id},  
+        "poster": "${movie.poster}",
+        "title": "${movie.title}",
+        "director": "${movie.director}",
+        "genre": "${movie.genre}",
+        "ratingData": {
+            "numberOfRatings": ${movie.ratingData.numberOfRatings++},
+            "lastRating": ${usersRating},
+            "currentRating": ${newRating}
+          }
+        }`,
+    dataType: 'json',
+    contentType: "application/json; charset=utf-8",
+    success: function(result) {
+        console.log(result);
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+        console.log(errorThrown);
+    },
+    complete: function(){
+        setTimeout(refreshPage, 1500);
+    }
+    });
+}
+
+function undoLastRating(id){
+// Planning to add a way to undo rating.
+}
+
 $("#close").click(function(event) {
     $('.modal').modal('toggle')
 });
