@@ -176,9 +176,9 @@ function updateRating(movie, usersRating, newRating){
     });
 }
 
-function undoLastRating(id){
-// Planning to add a way to undo rating.
-}
+/*function undoLastRating(id){
+    return `Didn't have time to add this. :(`;
+}*/
 
 $("#close").click(function(event) {
     $('.modal').modal('toggle')
