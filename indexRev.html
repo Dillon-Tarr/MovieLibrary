@@ -9,12 +9,13 @@
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
-<link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="stylesheet" type="text/css" href="stylesRev.css">
 </head>
 <body>
 
     <div class="row mainTitle">
-        <div class="col-md-3">
+        <div class="col-md-3 col-12">
+            <span><button type="button" id="addButton" data-toggle="modal" data-target=".bg-modal">Add New</button></span>
         </div>
         <div class="col-md-6 col-12 text-center">
         <h1 class="display-3">Movie Library</h1>
@@ -24,23 +25,9 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <table class="table table-image">
-                    <thead> 
-                    <tr class="tbl">
-                        <th scope="col"><span><button type="button" id="addButton" data-toggle="modal" data-target=".bg-modal">Add New</button></span></th>
-                        <th scope="col"><span>Poster</span></th>
-                        <th scope="col"><span>Title</span></th>
-                        <th scope="col"><span>Director</span></th>
-                        <th scope="col"><span >Genre</span></th>
-                    </tr>
-                    </thead>
-                    <tbody id="table-data">
+        <div class="row justify-content-around display-flex" id="table-data">
+ 
 
-                    </tbody>
-                </table>
-            </div>
         </div>
     </div>
 
@@ -53,11 +40,12 @@
                         <input class="modalInputRow" id="title" placeholder="enter title">
                         <input class="modalInputRow" id="director" placeholder="enter director's name">
                         <input class="modalInputRow" id="genre" placeholder="enter genre">
+                        <p style="display: inline;">Rating:</p>&nbsp;<input style="display: inline;" class="modalInputRow ratingInput" id="rating" placeholder="0-10">
                         <button class="modalInputRow" id="confirmAdd" onclick="addMovie()">Confirm Add</button>
                     </form>
             </div>
         </div>
         </div>
 </body>
-<script src="script.js"></script>
+<script src="scriptRev2.0.js"></script>
 </html>

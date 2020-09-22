@@ -40,10 +40,10 @@ function buildTable(filter = false){
 
     for(let i = 0; i < data.length; i++){
         $("#table-data").append(`
-        <div class="col-12 col-lg-4 movieContainer">
+        <div class="col-12 col-lg-5 movieContainer">
             <div class="row">
-                <div class="col-6" id="poster${data[i].id}"><img src="${data[i].poster}" class="img-fluid posterImg" alt="Movie Poster"></div>
-            <div class="col-6">
+                <div class="col-5" id="poster${data[i].id}"><img src="${data[i].poster}" class="img-fluid posterImg" alt="Movie Poster"></div>
+            <div class="col-7">
                 <p id="title${data[i].id}">${data[i].title}</p>
                 <p id="director${data[i].id}">${data[i].director}</p>
                 <p id="genre${data[i].id}">${data[i].genre}</p>

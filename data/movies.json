@@ -94,5 +94,17 @@
       "lastRating": 10,
       "currentRating": 10
     }
+  },
+  {
+    "id": 9,
+    "poster": "https://m.media-amazon.com/images/M/MV5BZGFiZjRhMTYtZmMzYS00MGEyLWEzN2EtNWMzMjA3OGI0NGZlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_UY268_CR9,0,182,268_AL_.jpg",
+    "title": "Blast from the Past ",
+    "director": "Hugh Wilson",
+    "genre": "Comedy",
+    "ratingData": {
+      "numberOfRatings": 1,
+      "lastRating": 0,
+      "currentRating": 0
+    }
   }
 ]
