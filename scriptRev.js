@@ -40,15 +40,20 @@ function buildTable(filter = false){
 
     for(let i = 0; i < data.length; i++){
         $("#table-data").append(`
-        <tr>
-            <td scope="col"><span class="updateButtons${data[i].id}"><button class="updateButton" id="updateButton${data[i].id}" onclick="createUpdateFields(${data[i].id})">Update</button>
+        <div class="col-12 col-lg-4 movieContainer">
+            <div class="row">
+                <div class="col-6" id="poster${data[i].id}"><img src="${data[i].poster}" class="img-fluid posterImg" alt="Movie Poster"></div>
+            <div class="col-6">
+                <p id="title${data[i].id}">${data[i].title}</p>
+                <p id="director${data[i].id}">${data[i].director}</p>
+                <p id="genre${data[i].id}">${data[i].genre}</p>
+                <p id="rating${data[i].id}">${data[i].rating}</p>
+                <p><span class="updateButtons${data[i].id}"><button class="updateButton" id="updateButton${data[i].id}" onclick="createUpdateFields(${data[i].id})">Update</button>
                 <button class="hiddenButton" id="confirmUpdate${data[i].id}" onclick="updateMovie(${data[i].id})">Confirm Update</button><br>
-                <button class="hiddenButton" id="cancelUpdate${data[i].id}" onclick="refreshPage()">Cancel Update</button></span></td>
-            <td class="w-25" id="poster${data[i].id}"><img src="${data[i].poster}" class="img-fluid posterImg" alt="Movie Poster"></td>
-            <td id="title${data[i].id}">${data[i].title}</td>
-            <td id="director${data[i].id}">${data[i].director}</td>
-            <td id="genre${data[i].id}">${data[i].genre}</td>
-        </tr>`);
+                <button class="hiddenButton" id="cancelUpdate${data[i].id}" onclick="refreshPage()">Cancel Update</button></span></p>
+            </div>
+            </div>
+        </div>`);
     }
 }
 
@@ -78,10 +83,11 @@ function createUpdateFields(id){
     $( `#updateButton${id}` ).css( "display", "none" );
     $( `#confirmUpdate${id}` ).css( "display", "initial" );
     $( `#cancelUpdate${id}` ).css( "display", "initial" );
-    $( `#poster${id}` ).html( `<input type="text" id="posterInput${id}" value="${currentData[id - 1].poster}">` );
-    $( `#title${id}` ).html( `<input type="text" id="titleInput${id}" value="${currentData[id - 1].title}">` );
-    $( `#director${id}` ).html( `<input type="text" id="directorInput${id}" value="${currentData[id - 1].director}">` );
-    $( `#genre${id}` ).html( `<input type="text" id="genreInput${id}" value="${currentData[id - 1].genre}">` );
+    $( `#poster${id}` ).html( `<input type="text" class="inputField" id="posterInput${id}" value="${currentData[id - 1].poster}">` );
+    $( `#title${id}` ).html( `<input type="text" class="inputField" id="titleInput${id}" value="${currentData[id - 1].title}">` );
+    $( `#director${id}` ).html( `<input type="text" class="inputField" id="directorInput${id}" value="${currentData[id - 1].director}">` );
+    $( `#genre${id}` ).html( `<input type="text" class="inputField" id="genreInput${id}" value="${currentData[id - 1].genre}">` );
+    $( `#rating${id}` ).html( `Rating : <input type="text" class="ratingInput inputField" id="ratingInput${id}" value="${currentData[id - 1].rating}">` );
 }
 
 function updateMovie(id){
