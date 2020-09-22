@@ -1,5 +1,79 @@
 .movieContainer{
-    height: 300px;
+    height: 350px;
+    margin: 10px;
     padding: 10px;
     background-color: lavenderblush;
+}
+.my-auto{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+p{
+    font-size: 1.5rem;  
+}
+body{
+    background-color: rgb(208, 240, 228);
+}
+th{
+    font-size: 1.8rem;
+    border-width: 0px !important;
+}
+td{
+    font-size: 1.3rem;
+    border: solid rgb(191, 154, 226);
+    border-width: 2.5px 0px;
+}
+input{
+    margin: .5rem 0rem;     
+}
+.searchBox{
+    margin: 1.7rem .1rem;
+}
+.posterImg{
+    max-height: 20rem;
+}
+.hiddenButton{
+    display: none; 
+    margin: .5rem 0rem;   
+}
+.movieInputRow{
+    display: none;
+}
+#movieInputRowROW td{
+    line-height: 0;
+    padding: 0px;
+}
+.modal-content{
+    width: 500px;
+    height: 350px;
+    background-color: rbg(208, 240, 228);
+    border-radius: 4px;
+    text-align: center;
+    padding: 1.5rem;
+    position: relative;
+}
+.modalInputRow{
+    width: 50%;
+    display: block;
+    margin: 15px auto;
+}
+#close{
+    position: absolute;
+    margin-top: -10px;
+    top: 0;
+    right: 7px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+#addButton{
+    font-size: 1.3rem;
+    margin: 1.7rem .1rem;
+}
+.ratingInput{
+    width: 42px;
+}
+.inputField{
+    margin: .1rem;
+    font-size: 1rem;
 }
