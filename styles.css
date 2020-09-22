@@ -13,6 +13,7 @@ td{
 input{
     margin: .5rem 0rem;     
 }
+
 .searchBox{
     margin: 1.7rem .1rem;
 }
@@ -44,6 +45,13 @@ input{
     display: block;
     margin: 15px auto;
 }
+.ratingInput{
+    width: 42px;
+    font-size: 1.0rem
+}
+.rateButton{
+    font-size: 1.0rem;
+}
 #close{
     position: absolute;
     margin-top: -10px;
@@ -55,7 +63,4 @@ input{
 }
 #addButton{
     font-size: 1.3rem;
-}
-.ratingInput{
-    width: 42px;
 }

@@ -48,7 +48,9 @@ function buildTable(filter = false){
             <td id="title${data[i].id}">${data[i].title}</td>
             <td id="director${data[i].id}">${data[i].director}</td>
             <td id="genre${data[i].id}">${data[i].genre}</td>
-            <td id="rating${data[i].id}">${data[i].rating}</td>
+            <td id="rating${data[i].id}">${data[i].ratingData.currentRating}<br>
+                <button class="rateButton" id="addRating${data[i].id}" onclick="rateMovie(${data[i].id})">Rate:</button>&nbsp;
+                <input type="text" class ="ratingInput" id="ratingInput${data[i].id}" placeholder="0-10"></td>
         </tr>`);
     }
 }
@@ -83,7 +85,7 @@ function createUpdateFields(id){
     $( `#title${id}` ).html( `<input type="text" id="titleInput${id}" value="${currentData[id - 1].title}">` );
     $( `#director${id}` ).html( `<input type="text" id="directorInput${id}" value="${currentData[id - 1].director}">` );
     $( `#genre${id}` ).html( `<input type="text" id="genreInput${id}" value="${currentData[id - 1].genre}">` );
-    $( `#rating${id}` ).html( `<input type="text" id="ratingInput${id}" class="ratingInput" value="${currentData[id - 1].rating}">` );
+    $( `#rating${id}` ).html( `${currentData[id - 1].ratingData.currentRating}` );
 }
 
 function updateMovie(id){
@@ -91,6 +93,7 @@ function updateMovie(id){
     let title = $( `#titleInput${id}` ).val();
     let director = $( `#directorInput${id}` ).val();
     let genre = $( `#genreInput${id}` ).val();
+    let usersRating = $( `#ratingInput${id}` ).val();
     
     $.ajax({
         url: 'http://localhost:3000/api/movies',
@@ -116,18 +119,25 @@ function updateMovie(id){
     }); 
 }
 
-async function rateMovie(id){
-    let usersRating = parseFloat($( `ratingInput${id}` ).val()).toFixed(2);
+function rateMovie(id){
+    let usersRating = parseFloat($( `#ratingInput${id}` ).val());
+    if (usersRating > 10){
+        usersRating = 10;
+    }
+    else if (usersRating < 0){
+        usersRating = 0;
+    }
     let movie;
 
     $.ajax({
         url: `http://localhost:3000/api/movies/${id}`,
         dataType: "json",
         type: 'GET',
-        success: async function(data){
+        success: function(data){
+            console.log("The first one went through.")
             movie = data;
-            let newRating = ((movie.ratingData.currentRating * movie.ratingData.numberOfRatings) + usersRating) / (movie.ratingData.numberOfRatings + 1);
-            await updateRating(movie, usersRating, newRating);
+            let newRating = parseFloat((((movie.ratingData.currentRating * (movie.ratingData.numberOfRatings)) + usersRating) / (movie.ratingData.numberOfRatings + 1)).toFixed(2));
+            updateRating(movie, usersRating, newRating);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log(errorThrown);
@@ -135,7 +145,8 @@ async function rateMovie(id){
     });
 }
 
-async function updateRating(movie, usersRating, newRating){
+function updateRating(movie, usersRating, newRating){
+    movie.ratingData.numberOfRatings++;
     $.ajax({
     url: 'http://localhost:3000/api/movies',
     type: 'PUT',    
@@ -146,7 +157,7 @@ async function updateRating(movie, usersRating, newRating){
         "director": "${movie.director}",
         "genre": "${movie.genre}",
         "ratingData": {
-            "numberOfRatings": ${movie.ratingData.numberOfRatings++},
+            "numberOfRatings": ${movie.ratingData.numberOfRatings},
             "lastRating": ${usersRating},
             "currentRating": ${newRating}
           }
@@ -173,17 +184,12 @@ $("#close").click(function(event) {
     $('.modal').modal('toggle')
 });
 
-function createAddFields(){
-    $(`.movieInputRow`).css("display", "initial");
-    $(`#addButton`).css("display", "none");
-    $(`#movieInputRowROW td`).css({"line-height": "initial", "padding": "initial"})
-}
-
 function addMovie(){
     let poster = $( `#poster` ).val();
     let title = $( `#title` ).val();
     let director = $( `#director` ).val();
     let genre = $( `#genre` ).val();
+    let usersRating = $( `#rating` ).val();
     
     $.ajax({
         url: 'http://localhost:3000/api/movies',
@@ -192,8 +198,9 @@ function addMovie(){
             "poster": "${poster}",
             "title": "${title}",
             "director": "${director}",
-            "genre": "${genre}"
-          }`,
+            "genre": "${genre}",
+            "usersRating": ${usersRating}
+            }`,
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
         success: function(result) {

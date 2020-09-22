@@ -82,5 +82,17 @@
       "lastRating": 0,
       "currentRating": 0
     }
+  },
+  {
+    "id": 8,
+    "poster": "retvhet",
+    "title": "65745",
+    "director": "hihjfg",
+    "genre": "sdddddd",
+    "ratingData": {
+      "numberOfRatings": 5,
+      "lastRating": 2.222,
+      "currentRating": 6.44
+    }
   }
 ]
