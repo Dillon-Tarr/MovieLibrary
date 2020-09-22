@@ -82,5 +82,17 @@
       "lastRating": 0,
       "currentRating": 0
     }
+  },
+  {
+    "id": 8,
+    "poster": "https://m.media-amazon.com/images/M/MV5BM2Y3M2Y1MzUtNWViYi00YzZjLWE0YzUtMWVjYzc2YjI3Y2I2L2ltYWdlXkEyXkFqcGdeQXVyNzc5MjA3OA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "title": "The Best Little Whorehouse in Texas",
+    "director": "Colin Higgins",
+    "genre": "Musical",
+    "ratingData": {
+      "numberOfRatings": 1,
+      "lastRating": 10,
+      "currentRating": 10
+    }
   }
 ]

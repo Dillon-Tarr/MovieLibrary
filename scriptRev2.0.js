@@ -47,7 +47,7 @@ function buildTable(filter = false){
                 <p id="title${data[i].id}">${data[i].title}</p>
                 <p id="director${data[i].id}">${data[i].director}</p>
                 <p id="genre${data[i].id}">${data[i].genre}</p>
-                <p id="rating${data[i].id}">${data[i].rating}</p>
+                <p id="rating${data[i].id}">Rating : ${data[i].ratingData.currentRating}</p>
                 <p>
                 <button class="rateButton" id="addRating${data[i].id}" onclick="rateMovie(${data[i].id})">Rate:</button>&nbsp;
                 <input type="text" class ="ratingInput" id="ratingInput${data[i].id}" placeholder="0-10">
@@ -87,11 +87,11 @@ function createUpdateFields(id){
     $( `#updateButton${id}` ).css( "display", "none" );
     $( `#confirmUpdate${id}` ).css( "display", "initial" );
     $( `#cancelUpdate${id}` ).css( "display", "initial" );
-    $( `#poster${id}` ).html( `<input type="text" class="inputField" id="posterInput${id}" value="${currentData[id - 1].poster}">` );
-    $( `#title${id}` ).html( `<input type="text" class="inputField" id="titleInput${id}" value="${currentData[id - 1].title}">` );
-    $( `#director${id}` ).html( `<input type="text" class="inputField" id="directorInput${id}" value="${currentData[id - 1].director}">` );
-    $( `#genre${id}` ).html( `<input type="text" class="inputField" id="genreInput${id}" value="${currentData[id - 1].genre}">` );
-    $( `#rating${id}` ).html( `Rating : <input type="text" class="ratingInput inputField" id="ratingInput${id}" value="${currentData[id - 1].rating}">` );
+    $( `#poster${id}` ).html( `<input type="text" id="posterInput${id}" value="${currentData[id - 1].poster}">` );
+    $( `#title${id}` ).html( `<input type="text" id="titleInput${id}" value="${currentData[id - 1].title}">` );
+    $( `#director${id}` ).html( `<input type="text" id="directorInput${id}" value="${currentData[id - 1].director}">` );
+    $( `#genre${id}` ).html( `<input type="text" id="genreInput${id}" value="${currentData[id - 1].genre}">` );
+    $( `#rating${id}` ).html( `${currentData[id - 1].ratingData.currentRating}` );
 }
 
 function updateMovie(id){
@@ -99,6 +99,7 @@ function updateMovie(id){
     let title = $( `#titleInput${id}` ).val();
     let director = $( `#directorInput${id}` ).val();
     let genre = $( `#genreInput${id}` ).val();
+    let usersRating = $( `#ratingInput${id}` ).val();
     
     $.ajax({
         url: 'http://localhost:3000/api/movies',
@@ -124,21 +125,77 @@ function updateMovie(id){
     }); 
 }
 
+function rateMovie(id){
+    let usersRating = parseFloat($( `#ratingInput${id}` ).val());
+    if (usersRating > 10){
+        usersRating = 10;
+    }
+    else if (usersRating < 0){
+        usersRating = 0;
+    }
+    let movie;
+
+    $.ajax({
+        url: `http://localhost:3000/api/movies/${id}`,
+        dataType: "json",
+        type: 'GET',
+        success: function(data){
+            console.log("The first one went through.")
+            movie = data;
+            let newRating = parseFloat((((movie.ratingData.currentRating * (movie.ratingData.numberOfRatings)) + usersRating) / (movie.ratingData.numberOfRatings + 1)).toFixed(2));
+            updateRating(movie, usersRating, newRating);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+}
+
+function updateRating(movie, usersRating, newRating){
+    movie.ratingData.numberOfRatings++;
+    $.ajax({
+    url: 'http://localhost:3000/api/movies',
+    type: 'PUT',    
+    data: `{
+        "id": ${movie.id},  
+        "poster": "${movie.poster}",
+        "title": "${movie.title}",
+        "director": "${movie.director}",
+        "genre": "${movie.genre}",
+        "ratingData": {
+            "numberOfRatings": ${movie.ratingData.numberOfRatings},
+            "lastRating": ${usersRating},
+            "currentRating": ${newRating}
+          }
+        }`,
+    dataType: 'json',
+    contentType: "application/json; charset=utf-8",
+    success: function(result) {
+        console.log(result);
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+        console.log(errorThrown);
+    },
+    complete: function(){
+        setTimeout(refreshPage, 1500);
+    }
+    });
+}
+
+/*function undoLastRating(id){
+    return `Didn't have time to add this. :(`;
+}*/
+
 $("#close").click(function(event) {
     $('.modal').modal('toggle')
 });
-
-function createAddFields(){
-    $(`.movieInputRow`).css("display", "initial");
-    $(`#addButton`).css("display", "none");
-    $(`#movieInputRowROW td`).css({"line-height": "initial", "padding": "initial"})
-}
 
 function addMovie(){
     let poster = $( `#poster` ).val();
     let title = $( `#title` ).val();
     let director = $( `#director` ).val();
     let genre = $( `#genre` ).val();
+    let usersRating = $( `#rating` ).val();
     
     $.ajax({
         url: 'http://localhost:3000/api/movies',
@@ -147,8 +204,9 @@ function addMovie(){
             "poster": "${poster}",
             "title": "${title}",
             "director": "${director}",
-            "genre": "${genre}"
-          }`,
+            "genre": "${genre}",
+            "usersRating": ${usersRating}
+            }`,
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
         success: function(result) {
